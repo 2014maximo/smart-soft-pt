@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 p-3">
+        <h2 class="text-center">ANÁLISIS DE ARCHIVO</h2>
+        <div class="container" appDnd (fileDropped)="onFileDropped($event)">
+            <input accept="application/csv" type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target)" />
+            <i class="bi bi-file-earmark-arrow-down" style="font-size: 57px;"></i>
+            <h3>Arrastre y suelte el archivo .CSV aquí<br>o</h3>
+            <label for="fileDropRef">Busque el archivo</label>
+        </div>
+        <div class="files-list">
+            <div class="single-file" *ngFor="let file of files; let i = index">
+                <i class="bi bi-file-earmark-bar-graph" style="font-size: 46px;"></i>
+                <div class="info">
+                    <h4 class="name">{{ file?.name }}</h4>
+                    <p class="size">{{ formatBytes(file?.size) }}</p>
+                    <app-progress [progress]="file?.progress"></app-progress>
+                </div>
+                <i class="bi bi-trash text-danger" style="font-size: 26px;" (click)="deleteFile(i)"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>

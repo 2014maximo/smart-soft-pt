@@ -1,0 +1,16 @@
+<app-header></app-header>
+
+<div class="row">
+    <div class="col-md-1">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-11">
+        <div *ngIf="!active" class="espaciado d-none d-md-block"></div>
+        <app-load-file *ngIf="!active" (change)="detectTransition($event)"></app-load-file>
+        <div class="espacio"></div>
+        <app-grafic *ngIf="active"></app-grafic>
+        <div class="espaciado"></div>
+    </div>
+</div>
+
+<app-footer></app-footer>

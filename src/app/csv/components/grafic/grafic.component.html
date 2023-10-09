@@ -1,0 +1,24 @@
+<h2 class="text-center">REPRESENTACIÓN GRÁFICA</h2>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center">
+        <div style="width: 100%; height: auto;">
+            <canvas *ngIf="grafic==='mayor'" id="mayor"></canvas>
+            <canvas *ngIf="grafic==='menor'" id="menor"></canvas>
+            <canvas *ngIf="grafic==='afectado'" id="afectado"></canvas>
+
+            <div class="row mt-3">
+                <div class="col-md-4 text-center">
+                    <button class="btn rounded btn-outline-dark" (click)="generateChart(1)">Estado con mayor acumulado</button>
+                </div>
+                <div class="col-md-4 text-center">
+                    <button class="btn rounded btn-outline-dark" (click)="generateChart(2)">Estado con menor acumulado</button>
+                </div>
+                <div class="col-md-4 text-center">
+                    <button class="btn rounded btn-outline-dark" (click)="generateChart(3)">Estado más afectado</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
