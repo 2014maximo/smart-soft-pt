@@ -10,7 +10,8 @@ export const EXC_DATES = [
     "Lat",
     "Long_",
     "Combined_Key",
-    "Population"
+    "Population",
+    "FIPS"
 ]
 
 export const QUEST = {

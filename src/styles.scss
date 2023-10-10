@@ -5,11 +5,23 @@
 
 :root {
     --f-comfortaa: 'Comfortaa', cursive;
+    --c-base: #1ea3b4;
+    --contras-base: rgba(255,255,0,0.5);
 }
 
 body
 {
     font-family: 'Comfortaa', cursive;
+}
+
+.bg-base{
+    background-color: var(--c-base);
+}
+.bg-contras-base{
+    background-color: var(--contrast-base);
+}
+.c-base{
+    color:var(--c-base)
 }
 
 .espacio{
@@ -20,4 +32,13 @@ body
 }    
 .espaciado{
     height: 150px;
+}
+.fs-15{
+    font-size: 15px;
+}
+.drop {
+    filter: drop-shadow(0 11px 1px rgba(0, 0, 0, 0.7));
+}
+.drop-two {
+    filter: drop-shadow(0px 3px 1px rgba(0, 0, 0, 0.7));
 }

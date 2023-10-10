@@ -82,6 +82,7 @@ export class GraficComponent implements OnInit {
     let studyStates:string[]=[];
     let keysDates: string[]=[];
     
+    console.warn(d.length, 'CANTIDAD DE CONDADOS');
 
     d.forEach((ob)=>{studyStates.push(ob.Province_State)});
     studyStates.forEach((ee)=>{!this.nStates.includes(ee)? this.nStates.push(ee):''});
@@ -101,8 +102,6 @@ export class GraficComponent implements OnInit {
       }
     });
 
-    console.log(keysDates, 'FECHAS ORDENAS');
-
     this.nStates.forEach((f) => {
       let aState = d.filter(est => est.Province_State.includes(f));
       let less = 0;
@@ -118,18 +117,23 @@ export class GraficComponent implements OnInit {
         percent: Number(((less/citizens)*100).toFixed(6))
       });
     });
-    console.log(d.length, 'CANTIDAD DE BARRIOS TOTALES');
     d.forEach((country:any) => {
+
+/*       if(country.Province_State === 'New Jersey' && country.Admin2 === 'Unassigned'){
+        console.log('DEBUG');
+      } */
+
         this.fataDay.push({
           country: country.Admin2,
           date: this.dayDiference(country,keysDates, country.Province_State).date,
-          diference: this.dayDiference(country,keysDates, country.Province_State).mayorDiference,
+          diference: Math.abs(this.dayDiference(country,keysDates, country.Province_State).mayorDiference),
           Province_State: country.Province_State
         })
 
     });
 
-    // console.log(this.fataDay, 'TOTAL');
+    this.fataDay = this.fataDay.sort((a,b )=> a.diference - b.diference);
+    console.log(this.fataDay, 'mayor afectado');
     this.fatalitiesRef = Object.assign([], this.fatalities);
     this.generateChart(1);
   }
@@ -138,16 +142,27 @@ export class GraficComponent implements OnInit {
     let group:IDateDiference[]=[];
 
     for(let i=0; i<dates.length; i++){
-      let dateA = d[dates[i]];
-      let dateB = d[dates[i-1]];
+
+      let referA = dates[i];
+      let referB = dates[i-1];
+
+      let dateA = d[referA];
+      let dateB = d[referB];
+
+      let operation = dateA | dateB? (dateA)-(dateB):0;
+
+/*       if(dates[i]=== '12/19/20'){
+        console.log('debug');
+      } */
+
       group.push({
         date: dates[i],
-        mayorDiference: (dateA)-(dateB)
+        mayorDiference: operation
       })
       dateA=0;
       dateB=0;
     }
-    return group.sort((a,b) => a.mayorDiference + b.mayorDiference)[0]
+    return group.sort((a,b) => a.mayorDiference - b.mayorDiference)[0]
   }
 
   rbgAleatorios(cant:number):string[]{
@@ -226,16 +241,18 @@ export class GraficComponent implements OnInit {
   }
 
   estadoMasAfectado(){
-    let loses = this.fatalities.sort(((a, b) => a.losses - b.losses))[0];
+    let afecteds = this.fataDay.slice(-10);
+    let countrys = afecteds.map( country => country.Province_State);
+    let loses = afecteds.map(country => country.diference)
 
-    this.more = new Chart('menor', {
+    this.more = new Chart('afectado', {
       type: 'doughnut',
       data: {
-        labels: QUEST.mayorAcumulado(loses.citizens,loses.losses), // Reemplaza 'label' con el nombre de tu columna de etiquetas.
+        labels: countrys, // Reemplaza 'label' con el nombre de tu columna de etiquetas.
         datasets: [{
-          label: 'Número de habitantes',
-          data: [loses.citizens,loses.losses], // Reemplaza 'value' con el nombre de tu columna de valores.
-          backgroundColor: this.rbgAleatorios(2)
+          label: 'Mayor cantidad de bajas por día',
+          data: loses, // Reemplaza 'value' con el nombre de tu columna de valores.
+          backgroundColor: this.rbgAleatorios(afecteds.length)
         }]
       },
       options: {
@@ -246,7 +263,7 @@ export class GraficComponent implements OnInit {
           },
           title: {
             display: true,
-            text: loses.Province_State
+            text: countrys
           }
         }
       }
