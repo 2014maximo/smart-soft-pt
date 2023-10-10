@@ -5,9 +5,9 @@
         <app-sidebar class="d-none d-md-block"></app-sidebar>
     </div>
     <div class="col-md-11">
-        <div *ngIf="!active" class="espacio d-none d-md-block"></div>
+        <h5 class="m-4">ANÁLISIS CSV</h5>
         <app-load-file *ngIf="!active" (change)="detectTransition($event)"></app-load-file>
-        <div class="espacio"></div>
+        <div *ngIf="!active" class="espacio"></div>
         <app-grafic *ngIf="active"></app-grafic>
         <div class="espaciado"></div>
     </div>

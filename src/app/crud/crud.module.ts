@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CrudRoutingModule } from './crud-routing.module';
 import { ReadComponent } from './components/read/read.component';
 import { CreateComponent } from './components/create/create.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { CreateComponent } from './components/create/create.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     CrudRoutingModule
   ]
 })

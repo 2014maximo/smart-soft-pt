@@ -1,0 +1,13 @@
+/* --Box Shadows-- */
+.shadow-one {
+    box-shadow: 1px 39px 39px #000000;
+}
+
+.shadow-two {
+    -moz-box-shadow:10px 10px 5px #000000;
+    -webkit-box-shadow:10px 10px 5px #000000;
+    box-shadow:10px 10px 5px #000000;
+}
+.shadow-three {
+    box-shadow: 5px 5px 5px #000;
+}

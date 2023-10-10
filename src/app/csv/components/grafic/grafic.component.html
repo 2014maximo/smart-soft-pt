@@ -1,23 +1,29 @@
-<h2 class="text-center">REPRESENTACIÓN GRÁFICA</h2>
 <div class="row">
-    <div class="col-md-3"></div>
+    <div class="col-md-3">
+        <div class="d-flex flex-column align-items-center align-self-center">
+            <div class="text-center mt-3">
+                <button class="btn rounded btn-outline-dark {{ grafic==='mayor'? 'active':''}}" (click)="generateChart(1)">Mayor acumulado</button>
+            </div>
+            <div class="text-center mt-3">
+                <button class="btn rounded btn-outline-dark {{ grafic==='menor'? 'active':''}}"  (click)="generateChart(2)">Menor acumulado</button>
+            </div>
+            <div class="text-center mt-3">
+                <button class="btn rounded btn-outline-dark {{ grafic==='afectado'? 'active':''}}" (click)="generateChart(3)">Estado más afectado</button>
+            </div>
+        </div>
+        <div *ngIf="description" class="card mt-5" style="width: 18rem;">
+            <div class="card-body">
+              <p class="card-text">{{ description }}</p>
+            </div>
+        </div>
+    </div>
     <div class="col-md-6 text-center">
         <div style="width: 100%; height: auto;">
             <canvas *ngIf="grafic==='mayor'" id="mayor"></canvas>
             <canvas *ngIf="grafic==='menor'" id="menor"></canvas>
             <canvas *ngIf="grafic==='afectado'" id="afectado"></canvas>
 
-            <div class="row mt-3">
-                <div class="col-md-4 text-center">
-                    <button class="btn rounded btn-outline-dark" (click)="generateChart(1)">Estado con mayor acumulado</button>
-                </div>
-                <div class="col-md-4 text-center">
-                    <button class="btn rounded btn-outline-dark" (click)="generateChart(2)">Estado con menor acumulado</button>
-                </div>
-                <div class="col-md-4 text-center">
-                    <button class="btn rounded btn-outline-dark" (click)="generateChart(3)">Estado más afectado</button>
-                </div>
-            </div>
+            
         </div>
     </div>
     <div class="col-md-3"></div>

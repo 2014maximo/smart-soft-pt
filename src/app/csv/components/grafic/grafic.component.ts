@@ -3,9 +3,8 @@ import { ComunicationService } from '../../services/comunication.service';
 
 import * as Papa from 'papaparse';
 import Chart from 'chart.js/auto';
-import { EXC_DATES, QUEST } from '../../constants/dates.constant';
+import { EXC_DATES, QUEST, RESP_QUEST } from '../../constants/dates.constant';
 import { IDateDiference, IFatalDay, IFatalities } from '../../interfaces/data-states.interface';
-import { AnimationStyleMetadata } from '@angular/animations';
 
 @Component({
   selector: 'app-grafic',
@@ -22,6 +21,7 @@ export class GraficComponent implements OnInit {
   fatalities: IFatalities[]=[];
   fatalitiesRef: IFatalities[]=[];
   fataDay: IFatalDay[]=[];
+  description = '';
 
   nStates: string[]=[];
   grafic='';
@@ -52,6 +52,7 @@ export class GraficComponent implements OnInit {
   }
 
   generateChart(chart:number) {
+    this.description = '';
 
     switch(chart){
       case 1:
@@ -207,6 +208,8 @@ export class GraficComponent implements OnInit {
         }
       }
     });
+
+    this.description = RESP_QUEST.mayor(loses.Province_State, loses.losses);
   }
 
   menorAcumulado(){
@@ -238,6 +241,7 @@ export class GraficComponent implements OnInit {
         }
       }
     });
+    this.description = RESP_QUEST.minor(loses.Province_State, loses.losses);
   }
 
   estadoMasAfectado(){
@@ -250,7 +254,7 @@ export class GraficComponent implements OnInit {
       data: {
         labels: countrys, // Reemplaza 'label' con el nombre de tu columna de etiquetas.
         datasets: [{
-          label: 'Mayor cantidad de bajas por día',
+          label: 'Cantidad de bajas por día',
           data: loses, // Reemplaza 'value' con el nombre de tu columna de valores.
           backgroundColor: this.rbgAleatorios(afecteds.length)
         }]
@@ -268,6 +272,8 @@ export class GraficComponent implements OnInit {
         }
       }
     });
+    
+    this.description = RESP_QUEST.afected(afecteds[afecteds.length - 1].date, afecteds[afecteds.length - 1].diference, afecteds[afecteds.length - 1].Province_State);
   }
   
 
