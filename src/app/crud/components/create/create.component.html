@@ -1,21 +1,169 @@
 <!-- Button trigger modal -->
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" #createSale id="createSale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-      <div class="modal-content">
+      <div class="modal-content p-4">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Agregar venta</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <form [formGroup]="form" (submit)="send()">
+            <div class="form-row">
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="typeDocument"><small>Tipo de documento:</small></label>
+                <select id="typeDocument" class="form-control rounded-pill" formControlName="typeDocument">
+                  <option selected>Seleccione...</option>
+                  <option *ngFor="let type of listTypeDocument" value="{{ type.value }}">{{ type.label }}</option>
+                </select>
+                <span class="text-danger" *ngIf="this.form.get('typeDocument')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="numberDocument"><small>Número de documento:</small></label>
+                <input type="text" class="form-control rounded-pill" id="numberDocument" formControlName="numberDocument">
+                <span class="text-danger" *ngIf="this.form.get('numberDocument')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="nameCustomer"><small>Nombre del cliente:</small></label>
+                <input type="text" class="form-control rounded-pill" id="nameCustomer" formControlName="nameCustomer">
+                <span class="text-danger" *ngIf="this.form.get('nameCustomer')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="lastCustomer"><small>Apellido del cliente:</small></label>
+                <input type="text" class="form-control rounded-pill" id="lastCustomer" formControlName="lastCustomer">
+                <span class="text-danger" *ngIf="this.form.get('lastCustomer')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="email"><small>Correo eléctronico del cliente:</small></label>
+                <input type="text" class="form-control rounded-pill" id="email" formControlName="email">
+                <span class="text-danger" *ngIf="this.form.get('email')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="phone"><small>Número de celular:</small></label>
+                <input type="text" class="form-control rounded-pill" id="phone" formControlName="phone">
+                <span class="text-danger" *ngIf="this.form.get('phone')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+            </div>
+            <hr>
+            <p><b>Tipo de envío</b></p>
+            <div class="form-row">
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <div class="form-check">
+                  <input class="form-check-input"
+                        type="radio"
+                        name="typeShipping"
+                        id="typeShipping1"
+                        formControlName="typeShipping"
+                        value="Nacional" checked>
+                  <label class="form-check-label" for="typeShipping1">
+                    Nacional
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input"
+                      type="radio"
+                      name="typeShipping"
+                      formControlName="typeShipping"
+                      id="typeShipping2"
+                      value="Internacional">
+                  <label class="form-check-label" for="typeShipping2">
+                    Internacional
+                  </label>
+                </div>
+                <span class="text-danger" *ngIf="this.form.get('typeShipping')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="pointSale"><small>Punto de venta:</small></label>
+                <input type="text" class="form-control rounded-pill" id="pointSale" formControlName="pointSale">
+                <span class="text-danger" *ngIf="this.form.get('pointSale')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="email"><small>Seleccione operador:</small></label>
+                <input type="text" class="form-control rounded-pill" id="operator" formControlName="operator">
+                <span class="text-danger" *ngIf="this.form.get('operator')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="numberPackages"><small>Cantidad de paquetes:</small></label>
+                <input type="text" class="form-control rounded-pill" id="numberPackages" formControlName="numberPackages">
+                <span class="text-danger" *ngIf="this.form.get('numberPackages')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="guide"><small>Número de guía:</small></label>
+                <input type="text" class="form-control rounded-pill" id="guide" formControlName="guide">
+                <span class="text-danger" *ngIf="this.form.get('guide')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="salesValue"><small>Valor de la venta:</small></label>
+                <input type="text" class="form-control rounded-pill" id="salesValue" formControlName="salesValue">
+                <span class="text-danger" *ngIf="this.form.get('salesValue')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="methodPayment"><small>Método de pago:</small></label>
+                <select id="methodPayment" class="form-control rounded-pill" formControlName="methodPayment">
+                  <option selected>Seleccione...</option>
+                  <option *ngFor="let method of methodPayment" value="{{ method.value }}" >{{ method.label }}</option>
+                </select>
+                <span class="text-danger" *ngIf="this.form.get('methodPayment')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+              <div class="form-group col-sm-6 pr-3 pl-3">
+                <label for="commercialAdvisor"><small>Comercial quien realiza la venta:</small></label>
+                <input type="text" class="form-control rounded-pill" id="commercialAdvisor" formControlName="commercialAdvisor">
+                <span class="text-danger" *ngIf="this.form.get('commercialAdvisor')?.invalid && validate">
+                  <small>Este campo es requerido</small>
+                </span>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">
+                <button type="button" class="btn btn-secondary w-100 rounded-pill" data-dismiss="modal">Cancelar</button>
+              </div>
+              <div class="col-sm-3">
+                <button type="submit" class="btn bg-base w-100 rounded-pill text-light">Guardar</button>
+              </div>
+              <div class="col-sm-3"></div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
+  
+  group:any
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  updateState(e:any){
+    this.group = e;
   }
 
 }

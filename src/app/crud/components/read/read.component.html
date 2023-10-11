@@ -1,38 +1,46 @@
 
-      <div class="row bg-base mt-5">
-        <div class="col-sm-3">
-          <h5 class="m-2 text-light">VENTAS</h5>
+      <div class="shadow m-5 overflow-hidden rounded-top">
+        <div class="row bg-base">
+          <div class="col-sm-3 pb-2 pt-2 pl-4">
+            <h5 class="text-light mt-3">VENTAS</h5>
+          </div>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3 d-flex justify-content-center align-items-center pb-2 pt-2">
+            <form action="">
+              <input type="search" class="rounded-pill bg-transparent mr-4 border border-light">
+            </form>
+            <button class="btn bg-dark mr-5 rounded-circle text-light" data-toggle="modal" data-target="#createSale">
+              <i class="bi bi-plus"></i>
+            </button>
+          </div>
         </div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3 d-flex">
-          <form action="">
-            <input type="search">
-          </form>
-          <button class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
-            <i class="bi bi-plus"></i>
-          </button>
-        </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Punto de venta</th>
+                          <th scope="col">Nombre vendedor</th>
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Venta</th>
+                          <th scope="col"></th>
+  
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let sale of listSales">
+                          <td>{{ sale.pointSale}}</td>
+                          <td>{{ sale.commercialAdvisor }}</td>
+                          <td>{{ sale.date }}</td>
+                          <td>{{ sale.salesValue }}</td>
+                          <td>
+                            <button class="bg-transparent"><i class="bi bi-pencil c-base"></i></button>
+                            <button class="bg-transparent"><i class="bi bi-trash3 text-danger"></i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
       </div>
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">Punto de venta</th>
-                        <th scope="col">Nombre vendedor</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Venta</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let sale of listSales">
-                        <td>{{ sale.puntoVenta}}</td>
-                        <td>{{ sale.asesorComercial }}</td>
-                        <td>{{ sale.fecha }}</td>
-                        <td>{{ sale.valorVenta }}</td>
-                      </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>

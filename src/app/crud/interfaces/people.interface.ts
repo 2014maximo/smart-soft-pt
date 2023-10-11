@@ -1,18 +1,23 @@
 export interface ISale{
-        idVenta:number,
-        tipoDocumento:string,
-        numeroDocumento:string,
-        nombreCliente: string,
-        apellidoCliente: string,
-        Email:string,
-        telefono:string,
-        tipoEnvio: string,
-        operador: string,
-        cPaquetes:number,
-        guia:string,
-        valorVenta:string,
-        metodoPago:string,
-        puntoVenta: string,
-        fecha: string,
-        asesorComercial: string,
+        id:number,
+        typeDocument:string,
+        numberDocument:string,
+        nameCustomer: string,
+        lastCustomer: string,
+        email:string,
+        phone:string,
+        typeShipping: string,
+        operator: string,
+        numberPackages:number,
+        guide:string,
+        salesValue:string,
+        methodPayment:string,
+        pointSale: string,
+        date: string,
+        commercialAdvisor: string
+}
+
+export interface ITypeDocument{
+        value: string,
+        label:string
 }

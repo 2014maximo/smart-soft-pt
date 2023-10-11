@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CrudService } from '../../services/crud.service';
 import { ISale } from '../../interfaces/people.interface';
 
@@ -9,7 +9,7 @@ import { ISale } from '../../interfaces/people.interface';
 })
 export class ReadComponent implements OnInit {
 
-  listSales: ISale[]=[];
+  @Input() public listSales: any[] = [];
 
 
   constructor(private crudService:CrudService) { }

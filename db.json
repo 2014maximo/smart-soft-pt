@@ -1,22 +1,136 @@
 {
-    "ventas":[
-        {
-            "idVenta":1,
-            "tipoDocumento":"cédula",
-            "numeroDocumento":"234567890-k",
-            "nombreCliente": "Alex",
-            "apellidoCliente": "Muñoz",
-            "Email":"alex@gmail.com",
-            "telefono":"3148007248",
-            "tipoEnvio": "Nacional",
-            "operador": "TCC",
-            "cPaquetes":4,
-            "guia":"31g3as2ewq",
-            "valorVenta":"6500000",
-            "puntoVenta":"Parque Bello",
-            "metodoPago":"transferencia",
-            "fecha":"07/11/2021 - 4:21pm",
-            "asesorComercial": "Sara Bustani"
-        }
-    ]
+  "sale": [
+    {
+      "id": 1,
+      "typeDocument": "cc",
+      "numberDocument": "234567890-k",
+      "nameCustomer": "Alex",
+      "lastCustomer": "Muñoz",
+      "email": "alex@gmail.com",
+      "phone": "3148007248",
+      "typeShipping": "Nacional",
+      "operator": "TCC",
+      "numberPackages": 4,
+      "guide": "31g3as2ewq",
+      "salesValue": "6500000",
+      "pointSale": "Parque Bello",
+      "methodPayment": "transferencia",
+      "date": "07/11/2021 - 4:21pm",
+      "commercialAdvisor": "Sara Bustani"
+    },
+    {
+      "typeDocument": "",
+      "numberDocument": "71364174",
+      "nameCustomer": "Alex Uriel",
+      "lastCustomer": "Muñoz Paniagua",
+      "email": "alexuriel.777@gmail.com",
+      "phone": "3148007248",
+      "typeShipping": "Nacional",
+      "operator": "TCC",
+      "numberPackages": "4",
+      "guide": "41234134",
+      "salesValue": "dasdfasdfad",
+      "methodPayment": "",
+      "pointSale": "",
+      "date": "",
+      "commercialAdvisor": "",
+      "id": 2
+    },
+    {
+      "typeDocument": "cc",
+      "numberDocument": "71364174",
+      "nameCustomer": "Alex Uriel",
+      "lastCustomer": "Muñoz Paniagua",
+      "email": "alexuriel.777@gmail.com",
+      "phone": "3148007248",
+      "typeShipping": "Nacional",
+      "operator": "TCC",
+      "numberPackages": "4",
+      "guide": "wqer2341234",
+      "salesValue": "450000",
+      "methodPayment": "credit",
+      "pointSale": "Medellín",
+      "date": "2023-10-11T16:16:57.190Z",
+      "commercialAdvisor": "Jaime Ayala",
+      "id": 3
+    },
+    {
+      "typeDocument": "cc",
+      "numberDocument": "71364174",
+      "nameCustomer": "Alex Uriel",
+      "lastCustomer": "Muñoz Paniagua",
+      "email": "alexuriel.777@gmail.com",
+      "phone": "3148007248",
+      "typeShipping": "Nacional",
+      "operator": "TCC",
+      "numberPackages": "4",
+      "guide": "41234134",
+      "salesValue": "6500000",
+      "methodPayment": "credit",
+      "pointSale": "Medellín",
+      "date": "2023-10-11T17:34:31.915Z",
+      "commercialAdvisor": "Juana",
+      "id": 4
+    },
+    {
+      "typeDocument": "cc",
+      "numberDocument": "71364174",
+      "nameCustomer": "Alex Uriel",
+      "lastCustomer": "Muñoz Paniagua",
+      "email": "alexuriel.777@gmail.com",
+      "phone": "3148007248",
+      "typeShipping": "Internacional",
+      "operator": "TCC",
+      "numberPackages": "4",
+      "guide": "41234134",
+      "salesValue": "6500000",
+      "methodPayment": "credit",
+      "pointSale": "Medellín",
+      "date": "2023-10-11T17:40:33.271Z",
+      "commercialAdvisor": "Susana",
+      "id": 5
+    },
+    {
+      "typeDocument": "cc",
+      "numberDocument": "43646345",
+      "nameCustomer": "Alex Uriel",
+      "lastCustomer": "Muñoz Paniagua",
+      "email": "alexuriel.777@gmail.com",
+      "phone": "5234523445",
+      "typeShipping": "Internacional",
+      "operator": "TCC",
+      "numberPackages": "4",
+      "guide": "41234134",
+      "salesValue": "6500000",
+      "methodPayment": "cash",
+      "pointSale": "Medellín",
+      "date": "2023-10-11T20:43:25.328Z",
+      "commercialAdvisor": "Sanchez",
+      "id": 6
+    }
+  ],
+  "typeDocument": [
+    {
+      "value": "cc",
+      "label": "Cédula"
+    },
+    {
+      "value": "psport",
+      "label": "Pasaporte"
+    },
+    {
+      "value": "fc",
+      "label": "Cédula de extrangería"
+    }
+  ],
+  "methodPayment": [
+    {
+      "value": "cash",
+      "label": "Efectivo"
+    },
+    {
+      "value": "credit",
+      "label": "Crédito"
+    }
+  ]
 }
