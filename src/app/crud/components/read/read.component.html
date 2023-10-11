@@ -1,12 +1,38 @@
-<app-header></app-header>
 
-<div class="row">
-    <div class="col-md-1 bg-base pt-4">
-        <app-sidebar class="d-none d-md-block"></app-sidebar>
-    </div>
-    <div class="col-md-11">
-        
-    </div>
-</div>
-
-<app-footer></app-footer>
+      <div class="row bg-base mt-5">
+        <div class="col-sm-3">
+          <h5 class="m-2 text-light">VENTAS</h5>
+        </div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3 d-flex">
+          <form action="">
+            <input type="search">
+          </form>
+          <button class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+            <i class="bi bi-plus"></i>
+          </button>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Punto de venta</th>
+                        <th scope="col">Nombre vendedor</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Venta</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let sale of listSales">
+                        <td>{{ sale.puntoVenta}}</td>
+                        <td>{{ sale.asesorComercial }}</td>
+                        <td>{{ sale.fecha }}</td>
+                        <td>{{ sale.valorVenta }}</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>

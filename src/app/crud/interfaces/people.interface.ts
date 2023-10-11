@@ -1,0 +1,18 @@
+export interface ISale{
+        idVenta:number,
+        tipoDocumento:string,
+        numeroDocumento:string,
+        nombreCliente: string,
+        apellidoCliente: string,
+        Email:string,
+        telefono:string,
+        tipoEnvio: string,
+        operador: string,
+        cPaquetes:number,
+        guia:string,
+        valorVenta:string,
+        metodoPago:string,
+        puntoVenta: string,
+        fecha: string,
+        asesorComercial: string,
+}

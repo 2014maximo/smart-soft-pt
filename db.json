@@ -1,0 +1,22 @@
+{
+    "ventas":[
+        {
+            "idVenta":1,
+            "tipoDocumento":"cédula",
+            "numeroDocumento":"234567890-k",
+            "nombreCliente": "Alex",
+            "apellidoCliente": "Muñoz",
+            "Email":"alex@gmail.com",
+            "telefono":"3148007248",
+            "tipoEnvio": "Nacional",
+            "operador": "TCC",
+            "cPaquetes":4,
+            "guia":"31g3as2ewq",
+            "valorVenta":"6500000",
+            "puntoVenta":"Parque Bello",
+            "metodoPago":"transferencia",
+            "fecha":"07/11/2021 - 4:21pm",
+            "asesorComercial": "Sara Bustani"
+        }
+    ]
+}
