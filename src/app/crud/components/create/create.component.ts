@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, SimpleChanges, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISale, ITypeDocument } from '../../interfaces/people.interface';
 import { CrudService } from '../../services/crud.service';
@@ -10,6 +10,7 @@ import { CrudService } from '../../services/crud.service';
 })
 export class CreateComponent implements OnInit {
 
+  @Input() public sal: ISale;
   @Output() created: EventEmitter<boolean> =  new EventEmitter();
   @ViewChild('createSale') createSale: ElementRef;
 
@@ -25,6 +26,13 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes){
+      this.form.patchValue(this.sal);
+      console.log(this.sal, 'TE ESCUCHAMOS');
+    }  
   }
 
   private loadTypeDocument(){
@@ -51,6 +59,7 @@ export class CreateComponent implements OnInit {
 
   createForm():FormGroup{
     return this.fb.group({
+      id:new FormControl({value: '', disabled: false}),
       typeDocument:new FormControl({ value: '', disabled: false }, Validators.required),
       numberDocument:new FormControl({ value: '', disabled: false }, Validators.required),
       nameCustomer:new FormControl({ value: '', disabled: false }, Validators.required),
@@ -75,22 +84,41 @@ export class CreateComponent implements OnInit {
     this.form.setValidators;
 
     if(this.form.valid){
-      this.crudService.saveSale(this.form.value).subscribe({
-        next:(resp) => {
-          console.log(resp, 'respuesta');
-          this.created.emit(true);
-          this.createSale.nativeElement.click();
-          this.form.clearValidators();
-          this.form.reset();
-        },
-        error:(e)=>{
-          console.error(e,'error');
-        }
-      })
-    } else {
+      if(this.form.value.id){
+        this.processUpdate();
+      } else {
+        this.processSave();
+      }
+    } 
+  }
 
-    }
+  processSave(){
+    this.crudService.saveSale(this.form.value).subscribe({
+      next:(resp) => {
+        this.readyForm();
+      },
+      error:(e)=>{
+        console.error(e);
+      }
+    })
+  }
 
+  processUpdate(){
+    this.crudService.updateSale(this.form.value).subscribe({
+      next:(resp)=>{
+        this.readyForm();
+      },
+      error(err) {
+          console.error(err);
+      },
+    })
+  }
+
+  readyForm(){
+    this.created.emit(true);
+    this.createSale.nativeElement.click();
+    this.form.clearValidators();
+    this.form.reset();
   }
 
 }

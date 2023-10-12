@@ -5,8 +5,8 @@
         <app-sidebar class="d-none d-md-block"></app-sidebar>
     </div>
     <div class="col-md-11">
-        <app-read [change]="group"></app-read>
-        <app-create (created)="updateState($event)"></app-create>
+        <app-read [change]="group" (sale)="editSale($event)"></app-read>
+        <app-create (created)="updateState($event)" [sal]="sale"></app-create>
     </div>
 </div>
 

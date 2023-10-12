@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ISale } from '../../interfaces/people.interface';
 
 @Component({
   selector: 'app-layout',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
   
-  group:any
+  group:any;
+  sale:ISale;
 
   constructor() { }
 
@@ -16,6 +18,10 @@ export class LayoutComponent implements OnInit {
 
   updateState(e:any){
     this.group = e;
+  }
+
+  editSale(s:ISale){
+    this.sale = s;
   }
 
 }

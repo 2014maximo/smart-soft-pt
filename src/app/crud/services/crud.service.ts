@@ -28,5 +28,13 @@ export class CrudService {
     return this.http.post<any>(`${this.url}/sale`, sale);
   }
 
+  updateSale(sale: ISale):Observable<any>{
+    return this.http.put<any>(`${this.url}/sale/` + sale.id, sale)
+  }
+
+  deleteSale(id: number):Observable<any>{
+    return this.http.delete<any>(`${this.url}/sale/${id}`);
+  }
+
   
 }

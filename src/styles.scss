@@ -11,6 +11,7 @@
 
 body
 {
+    margin: 0;
     font-family: 'Comfortaa', cursive;
 }
 
@@ -36,9 +37,13 @@ body
 .fs-15{
     font-size: 15px;
 }
+.fs-20{
+    font-size: 20px;
+}
 .drop {
     filter: drop-shadow(0 11px 1px rgba(0, 0, 0, 0.7));
 }
 .drop-two {
     filter: drop-shadow(0px 3px 1px rgba(0, 0, 0, 0.7));
 }
+html, body { height: 100%; }
