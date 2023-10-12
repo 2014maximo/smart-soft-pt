@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -13,10 +13,11 @@ export class LoginComponent implements OnInit {
   show = false;
   isAlertOpen = false;
   noValido='';
+  validate = false;
 
-  ingreso = new FormGroup({
-    usuario: new FormControl(''),
-    clave: new FormControl(''),
+  ingres = new FormGroup({
+    user: new FormControl({ value: '', disabled: false }, Validators.required),
+    pass: new FormControl({ value: '', disabled: false }, Validators.required),
   });
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -25,25 +26,36 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: FormGroup) {
-    this.authService.login(form.value.usuario, form.value.clave).subscribe(
-      {
-        next: (resp)=> {
-          localStorage.setItem('us', resp.token);
-          this.router.navigate(['csv/read-csv']);
-        },
-        error: (e)=>{
-          console.error(e);
-          this.setOpen(false);
+    if(form.valid){
+      this.authService.login(form.value.user, form.value.pass).subscribe(
+        {
+          next: (resp)=> {
+            if(resp.token){
+              this.router.navigate(['csv/read-csv']);
+              localStorage.setItem('us', resp.token);
+            }
+          },
+          error: (e)=>{
+            console.error(e);
+            this.noValido = '';
+            this.setOpen(false);
+          }
         }
-      }
-    )
+      )
+    } else {
+      this.validate = true;
+      this.ingres.setValidators;
+    }
 
   }
 
   setOpen(isOpen: boolean) {
     this.isAlertOpen = isOpen;
-    this.ingreso.reset();
+    this.ingres.reset();
     this.noValido = 'Usuario o Clave erróneos.'
+    setTimeout(()=>{
+      this.noValido='';
+    },4000)
   }
 
 }

@@ -15,7 +15,7 @@ ng serve -o
 # 5. Utilizar usuario:
     eve.holt@reqres.in
 
-# 6. Utilizar clave:
+# 6. Utilizar clave (opcional):
     cityslicka
 
  
