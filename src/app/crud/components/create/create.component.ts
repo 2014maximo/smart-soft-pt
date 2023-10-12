@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ITypeDocument } from '../../interfaces/people.interface';
+import { ISale, ITypeDocument } from '../../interfaces/people.interface';
 import { CrudService } from '../../services/crud.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { CrudService } from '../../services/crud.service';
 })
 export class CreateComponent implements OnInit {
 
-  @Output() created: EventEmitter<any> =  new EventEmitter();
+  @Output() created: EventEmitter<boolean> =  new EventEmitter();
   @ViewChild('createSale') createSale: ElementRef;
 
   form: FormGroup;
@@ -78,10 +78,10 @@ export class CreateComponent implements OnInit {
       this.crudService.saveSale(this.form.value).subscribe({
         next:(resp) => {
           console.log(resp, 'respuesta');
+          this.created.emit(true);
           this.createSale.nativeElement.click();
-          this.form.reset();
           this.form.clearValidators();
-          this.created.emit(this.form.value);
+          this.form.reset();
         },
         error:(e)=>{
           console.error(e,'error');
