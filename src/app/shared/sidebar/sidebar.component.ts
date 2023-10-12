@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CONF } from './constants/sidebar.constant';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,13 +9,30 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(public router:Router) { }
+  config = CONF;
+
+  constructor(public router:Router) {
+    console.log(typeof(screen.width), 'EL ANCHO')
+  }
 
   ngOnInit(): void {
+    this.detectScreen();
   }
 
   returnRoute():string{
     return this.router.url
+  }
+
+  clearLocal(){
+    localStorage.clear();
+  }
+
+  detectScreen(){
+    if(screen.width > 768){
+      this.config = CONF;
+    } else {
+      this.config = 'text-center'
+    }
   }
 
 }

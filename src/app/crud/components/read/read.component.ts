@@ -70,10 +70,8 @@ export class ReadComponent implements OnInit {
 
   processDelete(){
     $('#deleteSale').modal('hide');
-    console.log(this.actualSale, 'ACUTL SALE');
     this.crudService.deleteSale(this.actualSale.id).subscribe({
       next:(resp)=>{
-        console.log("RESP",resp,'RESP');
         this.chargeList();
       },
       error:(e)=>{

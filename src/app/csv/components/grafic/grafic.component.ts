@@ -120,10 +120,6 @@ export class GraficComponent implements OnInit {
     });
     d.forEach((country:any) => {
 
-/*       if(country.Province_State === 'New Jersey' && country.Admin2 === 'Unassigned'){
-        console.log('DEBUG');
-      } */
-
         this.fataDay.push({
           country: country.Admin2,
           date: this.dayDiference(country,keysDates, country.Province_State).date,
@@ -134,7 +130,6 @@ export class GraficComponent implements OnInit {
     });
 
     this.fataDay = this.fataDay.sort((a,b )=> a.diference - b.diference);
-    console.log(this.fataDay, 'mayor afectado');
     this.fatalitiesRef = Object.assign([], this.fatalities);
     this.generateChart(1);
   }
@@ -151,10 +146,6 @@ export class GraficComponent implements OnInit {
       let dateB = d[referB];
 
       let operation = dateA | dateB? (dateA)-(dateB):0;
-
-/*       if(dates[i]=== '12/19/20'){
-        console.log('debug');
-      } */
 
       group.push({
         date: dates[i],

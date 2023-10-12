@@ -28,10 +28,12 @@ export class LoginComponent implements OnInit {
     this.authService.login(form.value.usuario, form.value.clave).subscribe(
       {
         next: (resp)=> {
+          localStorage.setItem('us', resp.token);
           this.router.navigate(['csv/read-csv']);
         },
         error: (e)=>{
-          console.error(e,'EL ERROR');
+          console.error(e);
+          this.setOpen(false);
         }
       }
     )

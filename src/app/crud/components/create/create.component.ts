@@ -31,7 +31,6 @@ export class CreateComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if(changes){
       this.form.patchValue(this.sal);
-      console.log(this.sal, 'TE ESCUCHAMOS');
     }  
   }
 

@@ -1,0 +1,1 @@
+export const CONF = 'd-flex flex-column align-items-center align-self-center'
